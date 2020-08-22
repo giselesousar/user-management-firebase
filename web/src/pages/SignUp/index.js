@@ -14,9 +14,12 @@ export default function SignUp() {
 
     return (
         <Minimal>
-            <Container style={{
-                width: "40%"
-            }}>
+            <Col  
+                 xs={12}
+                 lg={4}
+                 md={10}
+                 sm={10}
+            >
                 <Container style={{
                     display: "flex",
                     justifyContent: "center",
@@ -100,7 +103,7 @@ export default function SignUp() {
                         </span> Sign Up with Github
                     </Button>
                 </div>
-            </Container>
+            </Col>
         </Minimal>
     )
 }

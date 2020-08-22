@@ -5,11 +5,13 @@ export default function Minimal(props){
     const { children } = props;
 
     return(
-        <Container fluid style={{
+        <Container 
+        xs={12}
+        fluid style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            minHeight: "100vh"
+            minHeight: "100vh",
         }}>
             {children}
         </Container>
