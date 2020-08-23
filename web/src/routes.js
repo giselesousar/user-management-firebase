@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Switch, Redirect, BrowserRouter, Route } from 'react-router-dom';
+import {UserContext} from './providers/UserProvider';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -7,16 +8,15 @@ import Landing from './pages/Landing';
 import NotFound from './pages/NotFound';
 
 const Routes = () => {
-  //const isLoggedIn = (localStorage.getItem("hash")) ? JSON.parse(localStorage.getItem("hash")) : false;
-  const isLoggedIn = false;
+  //const user = (localStorage.getItem("hash")) ? JSON.parse(localStorage.getItem("hash")) : false;
+  const {user} = useContext(UserContext);
 
-  return (!isLoggedIn) ? 
+  return (!user) ? 
   (
   <BrowserRouter>
     <Switch>
         <Route exact path={process.env.PUBLIC_URL + "/sign-in"} component={SignIn}/>
         <Route exact path={process.env.PUBLIC_URL + "/sign-up"} component={SignUp}/>
-        <Redirect to="/sign-in"/>
     </Switch>
   </BrowserRouter>
 
@@ -26,7 +26,6 @@ const Routes = () => {
       <Switch>
         <Route exact path={process.env.PUBLIC_URL + "/"} component={Landing}/>
         <Route exact path={process.env.PUBLIC_URL + "/not-found"} component={NotFound}/>
-        <Redirect to="/not-found" />
       </Switch>
       </BrowserRouter >
 

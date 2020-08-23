@@ -1,15 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Container, Form, Button, Col, Row } from 'react-bootstrap';
 import Minimal from '../../layouts/Minimal';
 import { FaFacebook, FaGoogle, FaGithub } from 'react-icons/fa';
 import {useHistory} from 'react-router-dom';
+import {firebaseAuth} from '../../firebase/FirebaseUtils'
+
 
 export default function SignUp() {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const history = useHistory();
 
     function navigateToSignUp(){
         history.push("/sign-in")
+    }
+
+    function handleSignUp(e){
+        e.preventDefault();
+        firebaseAuth.createUserWithEmailAndPassword(email, password).then(function (result){
+            history.push("/");
+        })
+        .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage)
+            // ...
+          });
     }
 
     return (
@@ -27,7 +46,7 @@ export default function SignUp() {
                 }}>
                     <h1>Create Account</h1>
                 </Container>
-                <Form>
+                <Form onSubmit={handleSignUp}>
                     <Form.Group>
                         <Form.Control
                             type="text"
@@ -41,6 +60,8 @@ export default function SignUp() {
                         <Form.Control
                             type="email"
                             placeholder="Enter email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             style={{
                                 height: 50,
                             }}
@@ -50,6 +71,8 @@ export default function SignUp() {
                         <Form.Control
                             type="password"
                             placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             style={{
                                 height: 50,
                             }}
@@ -86,21 +109,21 @@ export default function SignUp() {
                     <Button style={{width: "100%", textAlign: "left"}}variant="outline-primary">
                         <span style={{marginRight: 10}}>
                             <FaFacebook size={20}/>
-                        </span> Sign Up with Facebook
+                        </span> Sign in with Facebook
                     </Button>
                 </div>
                 <div style={{marginTop: 10}}>
                     <Button style={{width: "100%", textAlign: "left"}}variant="outline-primary">
                         <span style={{marginRight: 10}}>
                             <FaGoogle size={20}/>
-                        </span> Sign Up with Google
+                        </span> Sign in with Google
                     </Button>
                 </div>
                 <div style={{marginTop: 10}}>
                     <Button style={{width: "100%", textAlign: "left"}}variant="outline-primary">
                         <span style={{marginRight: 10}}>
                             <FaGithub size={20}/>
-                        </span> Sign Up with Github
+                        </span> Sign in with Github
                     </Button>
                 </div>
             </Col>
