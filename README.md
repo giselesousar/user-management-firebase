@@ -1,8 +1,8 @@
 # User Management Firebase
 Simples aplicação web implementando controle de autenticação de usuários, controle de rotas e gerenciamento de usuários desenvolvida com React + Firebase.
 
-![signin](/web/assets/images/signin.png)
-![signup](/web/assets/images/signup.png)
+![signin](/web/assets/images/signIn.png)
+![signup](/web/assets/images/signUp.png)
 
 # Setup
 * Clone o projeto
