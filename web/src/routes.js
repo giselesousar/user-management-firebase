@@ -8,28 +8,28 @@ import Landing from './pages/Landing';
 import NotFound from './pages/NotFound';
 
 const Routes = () => {
-  //const user = (localStorage.getItem("hash")) ? JSON.parse(localStorage.getItem("hash")) : false;
   const {user} = useContext(UserContext);
 
-  return (!user) ? 
-  (
-  <BrowserRouter>
-    <Switch>
-        <Route exact path={process.env.PUBLIC_URL + "/sign-in"} component={SignIn}/>
-        <Route exact path={process.env.PUBLIC_URL + "/sign-up"} component={SignUp}/>
-    </Switch>
-  </BrowserRouter>
-
-  ) 
-    : (
-      <BrowserRouter >
+  return (
+    <BrowserRouter>
       <Switch>
-        <Route exact path={process.env.PUBLIC_URL + "/"} component={Landing}/>
-        <Route exact path={process.env.PUBLIC_URL + "/not-found"} component={NotFound}/>
+        {!user ? 
+        <>
+          <Route exact path={process.env.PUBLIC_URL + "/sign-in"} component={SignIn}/>
+          <Route exact path={process.env.PUBLIC_URL + "/sign-up"} component={SignUp}/>
+          <Redirect to="/sign-in"/>
+        </>
+          :
+          <>
+            <Route exact path={process.env.PUBLIC_URL + "/"} component={Landing}/>
+            <Route exact path={process.env.PUBLIC_URL + "/not-found"} component={NotFound}/>
+            <Redirect to="/"/>
+            </>
+        }
       </Switch>
-      </BrowserRouter >
-
-    );
+    </BrowserRouter>
+)
+  
 };
 
 export default Routes;

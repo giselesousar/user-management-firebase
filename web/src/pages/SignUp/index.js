@@ -10,6 +10,7 @@ export default function SignUp() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordTwo, setPasswordTwo] = useState('');
 
     const history = useHistory();
 
@@ -49,15 +50,6 @@ export default function SignUp() {
                 <Form onSubmit={handleSignUp}>
                     <Form.Group>
                         <Form.Control
-                            type="text"
-                            placeholder="Enter name"
-                            style={{
-                                height: 50,
-                            }}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Control
                             type="email"
                             placeholder="Enter email"
                             value={email}
@@ -68,7 +60,7 @@ export default function SignUp() {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control
+                    <Form.Control
                             type="password"
                             placeholder="Password"
                             value={password}
@@ -77,7 +69,20 @@ export default function SignUp() {
                                 height: 50,
                             }}
                         />
+                        </Form.Group>
+                    <Form.Group>
+                        <Form.Control
+                            type="password"
+                            placeholder="Confirm password"
+                            value={passwordTwo}
+                            onChange={(e) => setPasswordTwo(e.target.value)}
+                            style={{
+                                height: 50,
+                            }}
+                        />
+                        
                     </Form.Group>
+                   
                     <Container fluid style={{
                         display: "flex",
                         justifyContent: "center",
@@ -85,7 +90,7 @@ export default function SignUp() {
                         <Button style={{
                             width: "50%",
                             borderRadius: 50
-                        }} variant="primary" type="submit">
+                        }} variant="primary" type="submit" disabled={password.length<6 || password !== passwordTwo}>
                             Sign up
                 </Button>
 

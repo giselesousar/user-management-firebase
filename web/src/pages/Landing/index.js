@@ -20,6 +20,9 @@ export default function Landing(){
     }
 
     return(
+      <>
+        <h1>Bem vindo(a), {user.email}</h1>
         <Button onClick={handleLogout}>Logout</Button>
+      </>
     )
 }
