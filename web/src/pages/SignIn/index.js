@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
 import { Container, Form, Button, Col, Row } from 'react-bootstrap';
 import Minimal from '../../layouts/Minimal';
-import { FaFacebook, FaGoogle, FaGithub } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import {useHistory} from 'react-router-dom';
 import {firebaseAuth} from '../../firebase/FirebaseUtils'
 import firebase from 'firebase/app';
@@ -122,25 +122,12 @@ export default function SignIn() {
                 }}>
                     <h4>or</h4>
                 </Container>
-                <div style={{marginTop: 10}}>
-                    <Button style={{width: "100%", textAlign: "left"}}variant="outline-primary">
-                        <span style={{marginRight: 10}}>
-                            <FaFacebook size={20}/>
-                        </span> Sign In with Facebook
-                    </Button>
-                </div>
+
                 <div style={{marginTop: 10}}>
                     <Button onClick={handleSignInGoogle} style={{width: "100%", textAlign: "left"}}variant="outline-primary">
                         <span style={{marginRight: 10}}>
                             <FaGoogle size={20}/>
                         </span> Sign In with Google
-                    </Button>
-                </div>
-                <div style={{marginTop: 10}}>
-                    <Button style={{width: "100%", textAlign: "left"}}variant="outline-primary">
-                        <span style={{marginRight: 10}}>
-                            <FaGithub size={20}/>
-                        </span> Sign In with Github
                     </Button>
                 </div>
             </Col>

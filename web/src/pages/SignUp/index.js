@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Container, Form, Button, Col, Row } from 'react-bootstrap';
 import Minimal from '../../layouts/Minimal';
-import { FaFacebook, FaGoogle, FaGithub } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import {useHistory} from 'react-router-dom';
 import {firebaseAuth} from '../../firebase/FirebaseUtils'
 
@@ -108,22 +108,8 @@ export default function SignUp() {
                 <div style={{marginTop: 10}}>
                     <Button style={{width: "100%", textAlign: "left"}}variant="outline-primary">
                         <span style={{marginRight: 10}}>
-                            <FaFacebook size={20}/>
-                        </span> Sign in with Facebook
-                    </Button>
-                </div>
-                <div style={{marginTop: 10}}>
-                    <Button style={{width: "100%", textAlign: "left"}}variant="outline-primary">
-                        <span style={{marginRight: 10}}>
                             <FaGoogle size={20}/>
                         </span> Sign in with Google
-                    </Button>
-                </div>
-                <div style={{marginTop: 10}}>
-                    <Button style={{width: "100%", textAlign: "left"}}variant="outline-primary">
-                        <span style={{marginRight: 10}}>
-                            <FaGithub size={20}/>
-                        </span> Sign in with Github
                     </Button>
                 </div>
             </Col>
